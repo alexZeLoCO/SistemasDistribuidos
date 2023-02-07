@@ -2,9 +2,9 @@
 
 int main (int argc, char** argv) 
 {
-	char 	c = 'a';
-	int	i = 0;
-	double	z = 0.0;
+	char			c = 'a';
+	int				i = 0;
+	double		z = 0.0;
 	printf("tipo;operacion;resultado\n");
 
 	printf("char;sizeof(c);%lu\n", sizeof(c));
