@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <stdlib.h>
 
 int main (int argc, char** argv)
 {
@@ -11,7 +12,7 @@ int main (int argc, char** argv)
 		return 1;
 	}
 	int fds[2];
-	int fd;
+	int fd, cuantos;
 	char buff[100];
 	pid_t pid;
 	pipe(fds); // Se crea el pipe
