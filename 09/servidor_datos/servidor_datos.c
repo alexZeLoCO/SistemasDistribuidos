@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <rpc/types.h>
 #include <rpc/rpc.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <string.h>
+#include <unistd.h>
 
 #include "mis_tipos.h"
 
@@ -25,12 +29,12 @@ int main ()
 	struct sockaddr_in d_local;
 
 	// Socket setup
-	sock_pasivo.sin_family = AF_INET;
-	sock_pasivo.sin_addr.s_addr = htonl(INADDR_ANY);
-	sock_pasivo.sin_port = htons(7890);
+	d_local.sin_family = AF_INET;
+	d_local.sin_addr.s_addr = htonl(INADDR_ANY);
+	d_local.sin_port = htons(7890);
 
-	bind(sock_pasivo, (struct sockaddr*)%d_local, sizeof(d_local));
-	liste(sock_pasivo, SOMAXCONN);
+	bind(sock_pasivo, (struct sockaddr*) &d_local, sizeof(d_local));
+	listen(sock_pasivo, SOMAXCONN);
 	
 	// Accept socket and link to file + check error
 	if (fichero = fdopen(sock_datos = accept(sock_pasivo, 0, 0), "w")== NULL)
